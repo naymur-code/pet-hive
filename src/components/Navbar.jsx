@@ -1,18 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router";
+import { AuthContext } from "../provider/AuthProvider";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase/firebase.config";
 
 const Navbar = () => {
-    // Home | Pets & Supplies | Add Listing | Add Listing | My Orders
-    const navLinks=<>
-        <li><NavLink to='/home'>Home</NavLink></li>
-        <li><NavLink>Pets & Supplies</NavLink></li>
-        <li><NavLink>Add Listing</NavLink></li>
-        <li><NavLink> My Orders</NavLink></li>
-
+  const { user } = useContext(AuthContext);
+  const handleLogOut = () => {
+    signOut(auth)
+      .then(() => console.log("logout"))
+      .catch((error) => console.log(error));
+  };
+  const navLinks = (
+    <>
+      <li>
+        <NavLink to="/home">Home</NavLink>
+      </li>
+      <li>
+        <NavLink>Pets & Supplies</NavLink>
+      </li>
+      <li>
+        <NavLink>Add Listing</NavLink>
+      </li>
+      <li>
+        <NavLink to='myorders'> My Orders</NavLink>
+      </li>
     </>
-        
+  );
   return (
-    <div className="bg-base-100 text-gray-600 shadow-sm">
+    <div className="bg-base-100 shadow-sm">
       <div className="navbar container mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -37,18 +53,26 @@ const Navbar = () => {
               tabIndex="-1"
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
-         {navLinks}
+              {navLinks}
             </ul>
           </div>
-          <Link to='/' className="btn btn-ghost text-xl">PetHive</Link>
+          <Link to="/" className="btn btn-ghost text-xl">
+            PetHive
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            {navLinks}
-          </ul>
+          <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          {user ? (
+            <Link onClick={handleLogOut} to="/login" className="btn">
+              Logout
+            </Link>
+          ) : (
+            <Link to="/login" className="btn">
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>

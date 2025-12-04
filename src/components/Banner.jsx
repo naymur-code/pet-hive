@@ -25,7 +25,7 @@ const Banner = () => {
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
   };
   return (
-    <div className="h-[850px]">
+    <div className="md:h-[850px] h-[500px]">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -42,8 +42,8 @@ const Banner = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <div className="absolute bg-[#000000d3] w-full h-full flex flex-col justify-center items-center   ">
-            <div className="w-80 md:w-full text-center ">
+          <div className="absolute bg-[#000000d3] w-full h-full flex flex-col justify-center items-center">
+            <div className="w-80 md:w-full text-center">
               <h1 className=" md:text-7xl text-4xl font-bold text-center text-white ">
                 Keep Your Pets <br />
                 <span className="text-blue-400"> Warm & Safe</span>
