@@ -7,6 +7,8 @@ import Register from "../pages/Register";
 import Error from "../pages/Error";
 import MyOrders from "../pages/MyOrders";
 import PrivateRoute from "./PrivateRoute";
+import AddListing from "../pages/AddListing";
+import PetSupplies from "../pages/PetsSupplies";
 
 export const Routes = createBrowserRouter([
   {
@@ -16,6 +18,15 @@ export const Routes = createBrowserRouter([
     children: [
       { index: true, Component: Home },
       { path: "/home", element: <Home /> },
+      { path: "petssupplies", element: <PetSupplies /> },
+      {
+        path: "/addListing",
+        element: (
+          <PrivateRoute>
+            <AddListing />
+          </PrivateRoute>
+        ),
+      },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
       {
