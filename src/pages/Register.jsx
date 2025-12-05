@@ -4,6 +4,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../provider/AuthProvider";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const [error, setError] = useState("");
@@ -35,6 +36,11 @@ const Register = () => {
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
+        Swal.fire({
+          title: "Create New Account Success!",
+          icon: "success",
+          draggable: true,
+        });
         updateProfile(auth.currentUser, {
           displayName: name,
           photoURL: photoUrl,
@@ -54,8 +60,14 @@ const Register = () => {
     setError("");
     googleLogin()
       .then((result) => {
+        Swal.fire({
+          title: "Login Success!",
+          icon: "success",
+          draggable: true,
+        });
         setUser(result.user);
-        setLoading(false)
+        navigate("/");
+        setLoading(false);
       })
       .catch((error) => setError(error.message));
   };

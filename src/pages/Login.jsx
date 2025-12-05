@@ -5,6 +5,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import { signInWithEmailAndPassword } from "firebase/auth/cordova";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { sendPasswordResetEmail } from "firebase/auth";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const location = useLocation();
@@ -23,6 +24,11 @@ const Login = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((result) => {
         setUser(result.user);
+        Swal.fire({
+          title: "Login Success!",
+          icon: "success",
+          draggable: true,
+        });
         if (location?.state) {
           navigate(location.state);
           setLoading(false);
@@ -49,6 +55,11 @@ const Login = () => {
     googleLogin()
       .then((result) => {
         setUser(result.user);
+        Swal.fire({
+          title: "Login Success!",
+          icon: "success",
+          draggable: true,
+        });
         if (location?.state) {
           navigate(location.state);
           setLoading(false);
