@@ -75,7 +75,7 @@ const Login = () => {
         <h3 className="my-2 text-4xl font-semibold ">
           <span className="text-blue-400">Welcome </span> Back
         </h3>
-        <p>Sign in to continue to WarmPaws</p>
+        <p>Sign in to continue to PetHive</p>
       </div>
 
       <div className="flex justify-center items-center my-8">

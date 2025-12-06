@@ -6,7 +6,6 @@ import { auth } from "../firebase/firebase.config";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const { user } = useContext(AuthContext);
 
   const handleLogOut = () => {
@@ -18,19 +17,46 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li>
-        <NavLink to="/home">Home</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "text-blue-500 font-semibold" : ""
+          }
+          to="/home"
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/petssupplies">Pets & Supplies</NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "text-blue-500 font-semibold" : ""
+          }
+          to="/petssupplies"
+        >
+          Pets & Supplies
+        </NavLink>
       </li>
-
       {user && (
         <>
           <li>
-            <NavLink to="/addlisting">Add Listing</NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-blue-500 font-semibold" : ""
+              }
+              to="/addlisting"
+            >
+              Add Listing
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/myorders">My Orders</NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-blue-500 font-semibold" : ""
+              }
+              to="/myorders"
+            >
+              My Orders
+            </NavLink>
           </li>
         </>
       )}
@@ -38,18 +64,57 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-base-100 shadow-sm">
-      <div className="navbar container mx-auto px-5 ">
+    <div className="bg-white shadow-sm sticky top-0 z-50">
+      {" "}
+      <div className="navbar container mx-auto px-5 py-3">
+        {" "}
         <div className="navbar-start">
-          <div className="dropdown relative">
-            {/* Hamburger */}
+          {" "}
+          <Link to="/" className="btn btn-ghost normal-case text-2xl font-bold">
+            Pet<span className="text-blue-400">Hive</span>{" "}
+          </Link>{" "}
+        </div>
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-1 gap-4">{navLinks}</ul>
+        </div>
+        <div className="navbar-end flex items-center gap-3">
+          {user ? (
+            <>
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full overflow-hidden">
+                  <img
+                    src={
+                      user.photoURL
+                        ? user.photoURL
+                        : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    }
+                    alt="User Avatar"
+                  />
+                </div>
+              </div>
+              <button onClick={handleLogOut} className="btn btn-outline btn-sm">
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link to="/login" className="btn btn-info btn-sm">
+              Login
+            </Link>
+          )}
+
+          {/* Mobile menu button */}
+          <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="btn btn-ghost lg:hidden"
+              className="btn btn-ghost btn-circle"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -58,57 +123,21 @@ const Navbar = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
+                  d="M4 6h16M4 12h16M4 18h16"
                 />
               </svg>
             </button>
-
-            {/* Mobile menu */}
             {isOpen && (
-              <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow absolute">
+              <ul className="menu menu-compact dropdown-content mt-2 p-2 shadow bg-white rounded-box absolute right-5 top-16 w-52">
                 {navLinks}
+                {user && (
+                  <li>
+                    <button onClick={handleLogOut}>Logout</button>
+                  </li>
+                )}
               </ul>
             )}
           </div>
-
-          <Link to="/" className="btn btn-ghost text-xl">
-            Pet<span className="text-blue-400">Hive</span>
-          </Link>
-        </div>
-
-        {/* Desktop menu */}
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{navLinks}</ul>
-        </div>
-
-        <div className="navbar-end">
-          {user ? (
-            <div className="space-x-3">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost btn-circle avatar"
-              >
-                <div className="w-10 rounded-full">
-                  <img
-                    alt="Tailwind CSS Navbar component"
-                    src={
-                      user.photoURL
-                        ? user.photoURL
-                        : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                    }
-                  />
-                </div>
-              </div>
-              <a className="btn" onClick={handleLogOut}>
-                Logout
-              </a>
-            </div>
-          ) : (
-            <Link to="/login" className="btn">
-              Login
-            </Link>
-          )}
         </div>
       </div>
     </div>

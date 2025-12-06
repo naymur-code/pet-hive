@@ -44,11 +44,11 @@ const Banner = () => {
         <SwiperSlide>
           <div className="absolute bg-[#000000d3] w-full h-full flex flex-col justify-center items-center">
             <div className="w-80 md:w-full text-center">
-              <h1 className=" md:text-7xl text-4xl font-bold text-center text-white ">
-                Keep Your Pets <br />
-                <span className="text-blue-400"> Warm & Safe</span>
+              <h1 className=" md:text-5xl text-4xl font-bold text-center text-white ">
+                Because Every Pet Deserves <br />
+                <span className="text-blue-400"> Love & Care </span>
               </h1>
-              <h4 className="text-white md:text-2xl text-lg font-bold md:mt-4 md:mb-2 mt-3 mb-1">
+              <h4 className="text-white md:text-xl text-lg font-bold md:mt-4 md:mb-2 mt-3 mb-1">
                 Professional winter care services for your furry friends
               </h4>
               <p className="text-white">
@@ -56,7 +56,7 @@ const Banner = () => {
                 throughout the winter season
               </p>
               <Link
-                to="/services"
+                to="/petssupplies"
                 className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl md:my-4 my-2"
               >
                 Explore Services
@@ -71,10 +71,64 @@ const Banner = () => {
           />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={hero2} alt="" />
+          <div className="absolute bg-[#000000d3] w-full h-full flex flex-col justify-center items-center">
+            <div className="w-80 md:w-full text-center">
+              <h1 className=" md:text-5xl text-4xl font-bold text-center text-white ">
+                “Adopt, Don’t Shop — Give a ”
+                <br />
+                <span className="text-blue-400">Pet a Home.</span>
+              </h1>
+              <h4 className="text-white md:text-xl text-lg font-bold md:mt-4 md:mb-2 mt-3 mb-1">
+                Professional winter care services for your furry friends
+              </h4>
+              <p className="text-white">
+                Expert care to ensure your pets stay comfortable and healthy
+                throughout the winter season
+              </p>
+              <Link
+                to="/petssupplies"
+                className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl md:my-4 my-2"
+              >
+                Explore Services
+              </Link>
+            </div>
+          </div>
+          <img
+            src={hero2}
+            alt=""
+            width="100%"
+            className="h-full object-cover"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={hero3} alt="" />
+          <div className="absolute bg-[#000000d3] w-full h-full flex flex-col justify-center items-center">
+            <div className="w-80 md:w-full text-center">
+              <h1 className=" md:text-5xl text-4xl font-bold text-center text-white ">
+                “Find Your Furry Friend ”
+                <br />
+                <span className="text-blue-400">Today!</span>
+              </h1>
+              <h4 className="text-white md:text-xl text-lg font-bold md:mt-4 md:mb-2 mt-3 mb-1">
+                Professional winter care services for your furry friends
+              </h4>
+              <p className="text-white">
+                Expert care to ensure your pets stay comfortable and healthy
+                throughout the winter season
+              </p>
+              <Link
+                to="/petssupplies"
+                className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl md:my-4 my-2"
+              >
+                Explore Services
+              </Link>
+            </div>
+          </div>
+          <img
+            src={hero3}
+            alt=""
+            width="100%"
+            className="h-full object-cover"
+          />
         </SwiperSlide>
 
         <div className="autoplay-progress" slot="container-end">

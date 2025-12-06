@@ -75,7 +75,7 @@ const Register = () => {
     <div>
       <div className="flex justify-center items-center flex-col mt-10">
         <h3 className="my-2 text-4xl font-semibold ">
-          Join <span className="text-blue-400">WinterPaws</span>
+          Join <span className="text-blue-400">PetHive</span>
         </h3>
         <p>Create your account to keep your pets safe this winter</p>
       </div>

@@ -20,12 +20,9 @@ const Footer = () => {
         <div className="footer sm:footer-horizontal text-neutral-content p-10 ">
           <div className="space-y-3">
             <div>
-              <Link
-                to="/"
-                className="btn btn-ghost text-xl flex items-center gap-2"
-              >
-                <span>WinterPaws</span>
-              </Link>
+             <Link to="/" className="btn btn-ghost normal-case text-2xl font-bold">
+                         Pet<span className="text-blue-400">Hive</span>{" "}
+                       </Link>{" "}
             </div>
             <p className="md:w-80 text-left">
               Keeping your furry friends warm, safe, and healthy during the cold
@@ -84,9 +81,9 @@ const Footer = () => {
             <MdOutlineErrorOutline className="text-yellow-400 text-2xl" />
           </div>
           <div>
-            <h3 className="font-bold text-xl">Winter Emergency Care</h3>
+            <h3 className="font-bold text-xl">PetHive Emergency Care</h3>
             <p className=" text-sm">
-              Available 24/7 for winter-related pet emergencies. Call: +880
+              Available 24/7 for pet related  emergencies. Call: +880
               1774091130
             </p>
           </div>
@@ -96,7 +93,7 @@ const Footer = () => {
         <hr className="border-sm w-full" />
         <div className="container mx-auto pt-3">
           <div className="flex md:flex-row flex-col  md:justify-between text-center">
-            <p>© 2025 WarmPaws. All rights reserved.</p>
+            <p>© 2025 PetHive. All rights reserved.</p>
             <div className="flex gap-3 justify-center ">
               <a href="#">Privacy Policy</a>
               <a href="#">Terms of Service</a>

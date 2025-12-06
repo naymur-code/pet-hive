@@ -5,133 +5,166 @@ import Swal from "sweetalert2";
 
 const AddListing = () => {
   const { user } = useContext(AuthContext);
+
   const handleAddProduct = (e) => {
     e.preventDefault();
     const from = e.target;
-    const name = from.name.value;
-    const category = from.select.value;
-    const price = from.price.value;
-    const location = from.location.value;
-    const image = from.imageUrl.value;
-    const date = from.date.value;
-    const email = from.email.value;
-    const description = from.description.value;
     const newProduct = {
-      name,
-      price,
-      category,
-      image,
-      description,
-      date,
-      email,
-      location,
+      name: from.name.value,
+      category: from.select.value,
+      price: from.price.value,
+      location: from.location.value,
+      image: from.imageUrl.value,
+      date: from.date.value,
+      email: from.email.value,
+      description: from.description.value,
     };
 
     axios
       .post("http://localhost:3000/petssupplies", newProduct)
-      .then((result) => {
-        console.log(result);
+      .then(() => {
         from.reset();
         Swal.fire({
-          title: "New pets Supplies Add Success!",
+          title: "New Pet Supply Added Successfully!",
           icon: "success",
           draggable: true,
         });
       })
       .catch((error) => console.log(error));
   };
+
   return (
-    <div>
-      <div>
-        <div className="flex justify-center items-center flex-col mt-10">
-          <h3 className="my-2 text-4xl font-semibold ">
-            <span className="text-blue-400">Add </span> Listing
-          </h3>
-          <p>Sign in to continue to Pethive</p>
-        </div>
+    <div className=" bg-gray-100 flex flex-col items-center justify-center py-10 px-4">
+      {" "}
+      <div className="text-center mb-8">
+        {" "}
+        <h1 className="text-4xl md:text-5xl font-bold mb-2">
+          {" "}
+          <span className="text-blue-500">Add</span> Listing{" "}
+        </h1>{" "}
+        <p className="text-gray-600">Sign in to continue to Pethive</p>{" "}
+      </div>
+      <div className="w-full max-w-3xl bg-white shadow-lg rounded-2xl p-8 border border-gray-200">
+        <form onSubmit={handleAddProduct} className="space-y-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {/* Product Name */}
+            <div>
+              <label className="block mb-1 font-medium text-gray-700">
+                Product/Pet Name
+              </label>
+              <input
+                name="name"
+                type="text"
+                className="input input-bordered w-full focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                placeholder="Enter product/pet name"
+              />
+            </div>
 
-        <div className="flex justify-center items-center my-8">
-          <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl border border-gray-200">
-            <div className="card-body">
-              <form onSubmit={handleAddProduct}>
-                <fieldset className="fieldset gap-3">
-                  <label className="label">Product/Pet Name</label>
-                  <input
-                    name="name"
-                    type="text"
-                    className="input"
-                    placeholder=""
-                  />
+            {/* Category */}
+            <div>
+              <label className="block mb-1 font-medium text-gray-700">
+                Category
+              </label>
+              <select
+                name="select"
+                className="select select-bordered w-full focus:ring-2 focus:ring-blue-400 focus:outline-none"
+              >
+                <option disabled selected>
+                  Choose category
+                </option>
+                <option>Pets</option>
+                <option>Food</option>
+                <option>Accessories</option>
+                <option>Care_Products</option>
+              </select>
+            </div>
 
-                  <label className="label">Category</label>
-                  <select
-                    name="select"
-                    defaultValue="Pick a browser"
-                    className="select"
-                  >
-                    <option disabled={true}> pet selected</option>
-                    <option>Pets</option>
-                    <option>Food</option>
-                    <option>Accessories</option>
-                    <option>Care_Products</option>
-                  </select>
+            {/* Price */}
+            <div>
+              <label className="block mb-1 font-medium text-gray-700">
+                Price
+              </label>
+              <input
+                name="price"
+                type="number"
+                className="input input-bordered w-full focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                placeholder="0"
+              />
+            </div>
 
-                  <label className="label">Price </label>
-                  <input
-                    name="price"
-                    type="number"
-                    className="input"
-                    placeholder="0"
-                  />
+            {/* Location */}
+            <div>
+              <label className="block mb-1 font-medium text-gray-700">
+                Location
+              </label>
+              <input
+                name="location"
+                type="text"
+                className="input input-bordered w-full focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                placeholder="Enter location"
+              />
+            </div>
 
-                  <label className="label">Location</label>
-                  <input
-                    name="location"
-                    type="text"
-                    className="input"
-                    placeholder=""
-                  />
+            {/* Image URL */}
+            <div>
+              <label className="block mb-1 font-medium text-gray-700">
+                Image URL
+              </label>
+              <input
+                name="imageUrl"
+                type="text"
+                className="input input-bordered w-full focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                placeholder="Enter image URL"
+              />
+            </div>
 
-                  <label className="label">imageUrl</label>
-                  <input
-                    name="imageUrl"
-                    type="text"
-                    className="input"
-                    placeholder=""
-                  />
+            {/* Pick Up Date */}
+            <div>
+              <label className="block mb-1 font-medium text-gray-700">
+                Pick Up Date
+              </label>
+              <input
+                name="date"
+                type="date"
+                className="input input-bordered w-full focus:ring-2 focus:ring-blue-400 focus:outline-none"
+              />
+            </div>
 
-                  <label className="label">Date (Pick Up)</label>
-                  <input
-                    name="date"
-                    type="date"
-                    className="input"
-                    placeholder=""
-                  />
+            {/* User Email */}
+            <div className="md:col-span-2">
+              <label className="block mb-1 font-medium text-gray-700">
+                Current User Email
+              </label>
+              <input
+                name="email"
+                type="email"
+                defaultValue={user?.email}
+                className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
+                readOnly
+              />
+            </div>
 
-                  <label className="label">current user email </label>
-                  <input
-                    name="email"
-                    type="text"
-                    defaultValue={user?.email}
-                    className="input"
-                    placeholder=""
-                  />
-
-                  <fieldset className="fieldset">
-                    <legend className="fieldset-legend">Description</legend>
-                    <textarea
-                      name="description"
-                      className="textarea h-24"
-                      placeholder="details"
-                    ></textarea>
-                  </fieldset>
-
-                  <button className="btn btn-info mt-4">Add Product</button>
-                </fieldset>
-              </form>
+            {/* Description */}
+            <div className="md:col-span-2">
+              <label className="block mb-1 font-medium text-gray-700">
+                Description
+              </label>
+              <textarea
+                name="description"
+                className="textarea textarea-bordered w-full h-24 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                placeholder="Details about the product"
+              ></textarea>
             </div>
           </div>
-        </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="btn btn-info w-full py-3 text-lg font-semibold"
+          >
+            Add Product
+          </button>
+        </form>
       </div>
     </div>
   );
