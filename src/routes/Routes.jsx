@@ -9,6 +9,7 @@ import MyOrders from "../pages/MyOrders";
 import PrivateRoute from "./PrivateRoute";
 import AddListing from "../pages/AddListing";
 import PetSupplies from "../pages/PetsSupplies";
+import PetsSuppliesDetails from "../pages/PetsSuppliesDetails";
 
 export const Routes = createBrowserRouter([
   {
@@ -18,7 +19,6 @@ export const Routes = createBrowserRouter([
     children: [
       { index: true, Component: Home },
       { path: "/home", element: <Home /> },
-      { path: "petssupplies", element: <PetSupplies /> },
       {
         path: "/addListing",
         element: (
@@ -27,6 +27,9 @@ export const Routes = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      { path: "/petssupplies", element: <PetSupplies /> },
+      { path: "/petssupplies/:id", element: <PetsSuppliesDetails/>},
+
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
       {

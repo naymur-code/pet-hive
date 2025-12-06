@@ -7,7 +7,6 @@ const AddListing = () => {
   const { user } = useContext(AuthContext);
   const handleAddProduct = (e) => {
     e.preventDefault();
-    console.log("fad");
     const from = e.target;
     const name = from.name.value;
     const category = from.select.value;
@@ -27,7 +26,6 @@ const AddListing = () => {
       email,
       location,
     };
-    console.log(newProduct);
 
     axios
       .post("http://localhost:3000/petssupplies", newProduct)
