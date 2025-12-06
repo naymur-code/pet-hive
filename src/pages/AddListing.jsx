@@ -73,7 +73,7 @@ const AddListing = () => {
                     <option>Pets</option>
                     <option>Food</option>
                     <option>Accessories</option>
-                    <option>Care Products</option>
+                    <option>Care_Products</option>
                   </select>
 
                   <label className="label">Price </label>

@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import AddListing from "../pages/AddListing";
 import PetSupplies from "../pages/PetsSupplies";
 import PetsSuppliesDetails from "../pages/PetsSuppliesDetails";
+import FilteredProduct from "../pages/FilteredProduct";
 
 export const Routes = createBrowserRouter([
   {
@@ -28,7 +29,11 @@ export const Routes = createBrowserRouter([
         ),
       },
       { path: "/petssupplies", element: <PetSupplies /> },
-      { path: "/petssupplies/:id", element: <PetsSuppliesDetails/>},
+      { path: "/petssupplies/:id", element: <PetsSuppliesDetails /> },
+      {
+        path: "category-filtered/:pets",
+        element: <FilteredProduct />,
+      },
 
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
