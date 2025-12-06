@@ -13,28 +13,34 @@ const Category = () => {
       </div>
       <StyledWrapper>
         <div className="cards md:flex-row flex-col md:justify-between items-center">
-          <Link to={`/category-filtered/Pets`}>
-            <div className="card red">
-              <p className="tip">🐶 Pets (Adoption)</p>
-            </div>
-          </Link>
-          <Link to={`/category-filtered/Food`}>
-            <div className="card blue">
-              <p className="tip">🍖 Pet Food</p>
-            </div>
-          </Link>
-          <Link to={`/category-filtered/Accessories`}>
-            <div className="card green">
-            <p className="tip">🧸 Accessories</p>
+          <div className="card">
+            <Link to={`/category-filtered/Pets`}>
+              <div className="card red">
+                <p className="tip">🐶 Pets (Adoption)</p>
+              </div>
+            </Link>
           </div>
-          </Link>
-          <Link to={`/category-filtered/Care_Products`}>
-        
-          <div className="card new">
-            <p className="tip">💊 Pet Care Products</p>
+          <div className="card">
+            <Link to={`/category-filtered/Food`}>
+              <div className="card blue">
+                <p className="tip">🍖 Pet Food</p>
+              </div>
+            </Link>
           </div>
-          </Link>
-        
+          <div className="card">
+            <Link to={`/category-filtered/Accessories`}>
+              <div className="card green">
+                <p className="tip">🧸 Accessories</p>
+              </div>
+            </Link>
+          </div>
+          <div className="card">
+            <Link to={`/category-filtered/Care_Products`}>
+              <div className="card new">
+                <p className="tip">💊 Pet Care Products</p>
+              </div>
+            </Link>
+          </div>
         </div>
       </StyledWrapper>
     </div>
@@ -81,7 +87,7 @@ const StyledWrapper = styled.div`
     font-weight: 700;
   }
 
-  .cards .card p.second-text {
+  cards .card p.second-text {
     font-size: 0.7em;
   }
 
