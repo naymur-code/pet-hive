@@ -11,6 +11,7 @@ import AddListing from "../pages/AddListing";
 import PetSupplies from "../pages/PetsSupplies";
 import PetsSuppliesDetails from "../pages/PetsSuppliesDetails";
 import FilteredProduct from "../pages/FilteredProduct";
+import MyListing from "../pages/MyListing";
 
 export const Routes = createBrowserRouter([
   {
@@ -33,6 +34,14 @@ export const Routes = createBrowserRouter([
       {
         path: "category-filtered/:pets",
         element: <FilteredProduct />,
+      },
+      {
+        path: "/my-listing",
+        element: (
+          <PrivateRoute>
+            <MyListing />
+          </PrivateRoute>
+        ),
       },
 
       { path: "/login", element: <Login /> },

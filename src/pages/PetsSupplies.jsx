@@ -51,7 +51,6 @@ const PetSupplies = () => {
             <option disabled selected>
               Choose category
             </option>
-            <option>All</option>
             <option>Pets</option>
             <option>Food</option>
             <option>Accessories</option>

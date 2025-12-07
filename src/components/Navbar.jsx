@@ -53,6 +53,16 @@ const Navbar = () => {
               className={({ isActive }) =>
                 isActive ? "text-blue-500 font-semibold" : ""
               }
+              to="/my-listing"
+            >
+              My Listing
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-blue-500 font-semibold" : ""
+              }
               to="/myorders"
             >
               My Orders
