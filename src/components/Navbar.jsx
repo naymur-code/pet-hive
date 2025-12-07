@@ -96,7 +96,7 @@ const Navbar = () => {
                   />
                 </div>
               </div>
-              <button onClick={handleLogOut} className="btn btn-outline btn-sm">
+              <button onClick={handleLogOut} className="btn  btn-sm btn-error">
                 Logout
               </button>
             </>

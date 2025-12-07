@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 
 const AddListing = () => {
   const { user } = useContext(AuthContext);
+  const [okay, setOkay] = useState(false);
 
   const handleAddProduct = (e) => {
     e.preventDefault();
@@ -32,7 +33,6 @@ const AddListing = () => {
       })
       .catch((error) => console.log(error));
   };
-
   return (
     <div className=" bg-gray-100 flex flex-col items-center justify-center py-10 px-4">
       {" "}
@@ -66,6 +66,9 @@ const AddListing = () => {
                 Category
               </label>
               <select
+                onChange={(e) => {
+                  e.target.value == "Pets" ? setOkay(true) : setOkay(false);
+                }}
                 name="select"
                 className="select select-bordered w-full focus:ring-2 focus:ring-blue-400 focus:outline-none"
               >
@@ -80,17 +83,33 @@ const AddListing = () => {
             </div>
 
             {/* Price */}
-            <div>
-              <label className="block mb-1 font-medium text-gray-700">
-                Price
-              </label>
-              <input
-                name="price"
-                type="number"
-                className="input input-bordered w-full focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                placeholder="0"
-              />
-            </div>
+            {okay ? (
+              <div>
+                <label className="block mb-1 font-medium text-gray-700">
+                  Price
+                </label>
+                <input
+                  name="price"
+                  value={0}
+                  disabled
+                  type="number"
+                  className="input input-bordered w-full focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                  placeholder="0"
+                />
+              </div>
+            ) : (
+              <div>
+                <label className="block mb-1 font-medium text-gray-700">
+                  Price
+                </label>
+                <input
+                  name="price"
+                  type="number"
+                  className="input input-bordered w-full focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                  placeholder="0"
+                />
+              </div>
+            )}
 
             {/* Location */}
             <div>

@@ -32,7 +32,7 @@ const FilteredProduct = () => {
   }
   return (
     <div className="container mx-auto px-5">
-      <h1 className="md:text-5xl text-3xl font-bold text-center md:my-14 my-10">
+      <h1 className="md:text-5xl text-3xl font-bold  md:my-14 my-10">
         {" "}
         <span className="text-blue-500">{pets}</span> Category
       </h1>
