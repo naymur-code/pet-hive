@@ -91,21 +91,28 @@ const Navbar = () => {
   );
 
   return (
-    <div className=" shadow-sm sticky top-0 z-50">
+    <div
+      className={`shadow-sm sticky top-0 z-50 
+        ${theme === "light" ? "bg-white text-black" : "bg-gray-900 text-white"}`}
+    >
       <div className="navbar container mx-auto px-5 py-3">
+
+        {/* Left */}
         <div className="navbar-start">
           <Link to="/" className="btn btn-ghost normal-case text-2xl font-bold">
             Pet<span className="text-blue-400">Hive</span>
           </Link>
         </div>
 
+        {/* Center */}
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-4">{navLinks}</ul>
         </div>
 
+        {/* Right */}
         <div className="navbar-end flex items-center gap-3">
 
-          {/* Theme toggle */}
+          {/* Theme Toggle */}
           <label className="toggle text-base-content cursor-pointer">
             <input
               type="checkbox"
@@ -156,7 +163,7 @@ const Navbar = () => {
             </svg>
           </label>
 
-          {/* User logged in */}
+          {/* User */}
           {user ? (
             <>
               <div
@@ -209,7 +216,10 @@ const Navbar = () => {
             </button>
 
             {isOpen && (
-              <ul className="menu menu-compact dropdown-content mt-2 p-2 shadow bg-white rounded-box absolute right-5 top-16 w-52">
+              <ul
+                className={`menu menu-compact dropdown-content mt-2 p-2 shadow rounded-box absolute right-5 top-16 w-52
+                  ${theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"}`}
+              >
                 {navLinks}
                 {user && (
                   <li>
