@@ -1,15 +1,14 @@
-import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import PetCard from "../components/PetCard";
 import Loader from "../components/Loader";
+import PetCard from "../components/PetCard";
 
 const RecentListings = () => {
   const [loading, setLoading] = useState(true);
   const [pets, setPets] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:3000/petssupplies")
+      .get("https://pet-server1.vercel.app/petssupplies")
       .then((result) => {
         setTimeout(() => {
           setPets(result.data);

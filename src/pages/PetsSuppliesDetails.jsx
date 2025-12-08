@@ -1,9 +1,9 @@
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
+import Swal from "sweetalert2";
 import Loader from "../components/Loader";
 import { AuthContext } from "../provider/AuthProvider";
-import Swal from "sweetalert2";
 
 const PetsSuppliesDetails = () => {
   const [petDetails, setPetDetails] = useState({});
@@ -17,12 +17,14 @@ const PetsSuppliesDetails = () => {
     petDetails;
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/petssupplies/${id}`).then((result) => {
-      setTimeout(() => {
-        setPetDetails(result.data);
-        setLoading(false);
-      }, 500);
-    });
+    axios
+      .get(`https://pet-server1.vercel.app/petssupplies/${id}`)
+      .then((result) => {
+        setTimeout(() => {
+          setPetDetails(result.data);
+          setLoading(false);
+        }, 500);
+      });
   }, [id]);
 
   const handleOrderBtn = () => {
@@ -48,7 +50,7 @@ const PetsSuppliesDetails = () => {
     };
 
     axios
-      .post("http://localhost:3000/orders", orderData)
+      .post("https://pet-server1.vercel.app/orders", orderData)
       .then(() => {
         Swal.fire({
           title: "🛒 Order Successful!",

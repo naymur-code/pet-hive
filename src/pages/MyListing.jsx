@@ -1,7 +1,7 @@
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../provider/AuthProvider";
+import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../provider/AuthProvider";
 
 const MyListing = () => {
   const [listing, setListing] = useState([]);
@@ -12,7 +12,7 @@ const MyListing = () => {
     if (!user?.email) return;
 
     axios
-      .get(`http://localhost:3000/my-listing?email=${user.email}`)
+      .get(`https://pet-server1.vercel.app/my-listing?email=${user.email}`)
       .then((result) => setListing(result.data))
       .catch((error) => console.log(error));
   }, [user]);
@@ -30,7 +30,7 @@ const MyListing = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:3000/my-listing/${id}`)
+          .delete(`https://pet-server1.vercel.app/my-listing/${id}`)
           .then((res) => {
             if (res.data.deletedCount > 0) {
               Swal.fire(
@@ -67,7 +67,7 @@ const MyListing = () => {
     };
 
     axios
-      .put(`http://localhost:3000/petssupplies/${id}`, updatedData)
+      .put(`https://pet-server1.vercel.app/petssupplies/${id}`, updatedData)
       .then((result) => {
         if (result.data.modifiedCount > 0) {
           // Update list correctly

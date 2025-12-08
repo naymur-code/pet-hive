@@ -1,7 +1,7 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import PetCard from "../components/PetCard";
+import { useEffect, useState } from "react";
 import Loader from "../components/Loader";
+import PetCard from "../components/PetCard";
 
 const PetSupplies = () => {
   const [loading, setLoading] = useState(true);
@@ -11,7 +11,7 @@ const PetSupplies = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/petssupplies")
+      .get("https://pet-server1.vercel.app/petssupplies")
       .then((result) => {
         setTimeout(() => {
           setPets(result.data);
@@ -24,7 +24,7 @@ const PetSupplies = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:3000/category-filtered-product?category=${category}`
+        `https://pet-server1.vercel.app/category-filtered-product?category=${category}`
       )
       .then((result) => {
         setPets(result.data);

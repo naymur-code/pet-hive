@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
-import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../provider/AuthProvider";
 
 const AddListing = () => {
   const { user } = useContext(AuthContext);
@@ -22,7 +22,7 @@ const AddListing = () => {
     };
 
     axios
-      .post("http://localhost:3000/petssupplies", newProduct)
+      .post("https://pet-server1.vercel.app/petssupplies", newProduct)
       .then(() => {
         from.reset();
         Swal.fire({

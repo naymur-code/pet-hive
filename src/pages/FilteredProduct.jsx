@@ -1,8 +1,8 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import PetCard from "../components/PetCard";
 import Loader from "../components/Loader";
+import PetCard from "../components/PetCard";
 
 const FilteredProduct = () => {
   const [petssupplies, setPetssupplies] = useState([]);
@@ -10,7 +10,9 @@ const FilteredProduct = () => {
   const { pets } = useParams();
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/category-filtered-product?category=${pets}`)
+      .get(
+        `https://pet-server1.vercel.app/category-filtered-product?category=${pets}`
+      )
       .then((result) => {
         setTimeout(() => {
           setPetssupplies(result.data);
